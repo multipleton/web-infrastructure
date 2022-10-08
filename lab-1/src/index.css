@@ -1,1 +1,5 @@
-/* TODO */
+body {
+  font-family: "Helvetica Neue", Arial, monospace;
+  background-color: black;
+  color: white;
+}

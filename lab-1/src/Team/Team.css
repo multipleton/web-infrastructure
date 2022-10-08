@@ -1,0 +1,12 @@
+.team-section {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.team-section ul {
+  list-style-type: none;
+}
+
+.team-section li {
+  margin-top: 50px;
+}
