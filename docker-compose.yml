@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/postgres:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_USER: p-lab-3-user
+      POSTGRES_PASSWORD: p-lab-3-password
+      POSTGRES_DB: p-lab-3
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db/mongo:/docker-entrypoint-initdb.d/
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: m-lab-3-user
+      MONGO_INITDB_ROOT_PASSWORD: m-lab-3-password
+      MONGO_INITDB_DATABASE: m-lab-3
