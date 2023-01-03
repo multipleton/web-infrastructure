@@ -7,9 +7,9 @@ services:
     volumes:
       - ./db/postgres:/docker-entrypoint-initdb.d/
     environment:
-      POSTGRES_USER: p-lab-3-user
-      POSTGRES_PASSWORD: p-lab-3-password
-      POSTGRES_DB: p-lab-3
+      POSTGRES_USER: p-wi-user
+      POSTGRES_PASSWORD: p-wi-password
+      POSTGRES_DB: p-wi
   mongo:
     image: mongo
     ports:
@@ -17,6 +17,6 @@ services:
     volumes:
       - ./db/mongo:/docker-entrypoint-initdb.d/
     environment:
-      MONGO_INITDB_ROOT_USERNAME: m-lab-3-user
-      MONGO_INITDB_ROOT_PASSWORD: m-lab-3-password
-      MONGO_INITDB_DATABASE: m-lab-3
+      MONGO_INITDB_ROOT_USERNAME: m-wi-user
+      MONGO_INITDB_ROOT_PASSWORD: m-wi-password
+      MONGO_INITDB_DATABASE: m-wi
