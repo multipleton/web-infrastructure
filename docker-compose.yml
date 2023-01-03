@@ -1,7 +1,25 @@
 version: "3.8"
+
 services:
+  client:
+    container_name: wi-client
+    build: ./client
+    networks:
+      - wi-network
+    ports:
+      - 3010:80
+  server:
+    container_name: wi-server
+    build: ./server
+    networks:
+      - wi-network
+    ports:
+      - 3012:80
   postgres:
+    container_name: wi-postgres
     image: postgres
+    networks:
+      - wi-network
     ports:
       - 5432:5432
     volumes:
@@ -11,7 +29,10 @@ services:
       POSTGRES_PASSWORD: p-wi-password
       POSTGRES_DB: p-wi
   mongo:
+    container_name: wi-mongo
     image: mongo
+    networks:
+      - wi-network
     ports:
       - 27017:27017
     volumes:
@@ -20,3 +41,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: m-wi-user
       MONGO_INITDB_ROOT_PASSWORD: m-wi-password
       MONGO_INITDB_DATABASE: m-wi
+
+networks:
+  wi-network:
+    driver: bridge

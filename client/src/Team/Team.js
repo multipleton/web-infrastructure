@@ -20,7 +20,7 @@ function Team() {
     return member;
   });
   return (
-    <div class="team-section">
+    <div className="team-section">
       <ul>
         {team.map(({ name, github, username }) => <li key={name}>{name} | <a href={github}>{username}</a></li>)}
       </ul>

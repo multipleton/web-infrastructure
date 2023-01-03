@@ -15,7 +15,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "docker:build": "docker build . -t web-infrastructure/client",
-    "docker:start": "docker run --name wi-client -p 9876:80 web-infrastructure/client"
+    "docker:run": "docker run --name wi-client -p 3010:80 web-infrastructure/client"
   },
   "eslintConfig": {
     "extends": [
