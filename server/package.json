@@ -9,6 +9,7 @@
   "dependencies": {
     "@bakeryjs/router": "^1.0.1",
     "cli-argv-parser": "^1.0.1",
+    "mongoose": "^6.8.2",
     "pg": "^8.8.0"
   }
 }
