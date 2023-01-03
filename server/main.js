@@ -5,14 +5,7 @@ const { parse } = require('cli-argv-parser');
 
 const { port } = parse(process.argv, { port: String });
 
-const greet = ({ params, res }) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  return `Hello ${params.name}`;
-};
-
-router
-  .handle('/greet/:name', greet)
-  .provideReqRes(true);
+require('./src/handlers/users.handler')(router);
 
 const server = http.createServer(router.handler);
 server.listen(port || 3012);
