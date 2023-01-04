@@ -17,7 +17,7 @@ const getContributions = async ({ res }) => {
   }
 };
 
-const postContribution = async ({ res }) => {
+const postContribution = async ({ res, body }) => {
   setAccessHeaders(res);
   try {
     const { shared_id, title, description } = body;
@@ -54,7 +54,7 @@ const configurateRoutes = router => {
     .method('POST')
     .provideReqRes(true);
   router
-    .handle('/contributions', deleteContribution)
+    .handle('/contributions/:id', deleteContribution)
     .method('DELETE')
     .provideReqRes(true);
 };

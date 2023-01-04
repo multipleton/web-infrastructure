@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const url =
-  'mongodb://m-wi-user:m-wi-password@wi-mongo:27017/m-wi';
+  'mongodb://m-wi-db-user:m-wi-db-password@wi-mongo:27017/m-wi';
 
 module.exports = () => {
   try {

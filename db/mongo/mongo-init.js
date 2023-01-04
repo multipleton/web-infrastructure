@@ -2,6 +2,12 @@
 
 db.createCollection('contributions');
 
+db.createUser({
+  user: "m-wi-db-user",
+  pwd: "m-wi-db-password",
+  roles: [{ role: "readWrite", db: "m-wi" }],
+});
+
 db.contributions.insertMany([
   {
     shared_id: '053c7e56-306e-4ec8-a676-2a7be3d07928',
