@@ -1,4 +1,4 @@
-const { setAccessHeaders, preflight } = require('../utils/http');
+const { setAccessHeaders, setStatus, preflight } = require('../utils/http');
 const {
   getAllContributions,
   createContribution,
@@ -12,8 +12,7 @@ const getContributions = async ({ res }) => {
     return result;
   } catch (err) {
     console.error(err);
-    res.writeHead(500);
-    res.end();
+    setStatus(res, 500);
   }
 };
 
@@ -22,16 +21,14 @@ const postContribution = async ({ res, body }) => {
   try {
     const { shared_id, title, description } = body;
     if (!shared_id || !title || !description) {
-      res.writeHead(400);
-      res.end();
+      setStatus(res, 400);
       return;
     }
     const result = await createContribution({ shared_id, title, description });
     return result;
   } catch (err) {
     console.error(err);
-    res.writeHead(500);
-    res.end();
+    setStatus(res, 500);
   }
 };
 
@@ -42,8 +39,7 @@ const deleteContribution = async ({ res, params }) => {
     await removeContribution(id);
   } catch (err) {
     console.error(err);
-    res.writeHead(500);
-    res.end();
+    setStatus(res, 500);
   }
 };
 

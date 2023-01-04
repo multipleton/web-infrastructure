@@ -41,7 +41,7 @@ const getUsers = async ({ res }) => {
     return JSON.stringify(result);
   } catch (err) {
     console.error(err);
-    setStatus(400);
+    setStatus(res, 500);
   }
 };
 
@@ -53,7 +53,7 @@ const getUser = async ({ res, params }) => {
     return JSON.stringify(result);
   } catch (err) {
     console.error(err);
-    setStatus(400);
+    setStatus(res, 500);
   }
 };
 
@@ -64,7 +64,7 @@ const postUser = async ({ res, body }) => {
     await createUser(name, country, stack);
   } catch (err) {
     console.error(err);
-    setStatus(400);
+    setStatus(res, 500);
   }
 };
 
@@ -76,7 +76,7 @@ const putUser = async ({ res, params, body }) => {
     await updateUser(id, name, country, stack);
   } catch (err) {
     console.error(err);
-    setStatus(400);
+    setStatus(res, 500);
   }
 };
 
@@ -87,7 +87,7 @@ const deleteUser = async ({ res, params }) => {
     await removeUser(id);
   } catch (err) {
     console.error(err);
-    setStatus(400);
+    setStatus(res, 500);
   }
 };
 
