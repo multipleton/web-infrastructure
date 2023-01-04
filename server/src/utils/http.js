@@ -8,7 +8,6 @@ const setStatus = (res, status) => {
 };
 
 const preflight = ({ res }) => {
-  console.log('its me');
   setAccessHeaders(res);
 };
 
