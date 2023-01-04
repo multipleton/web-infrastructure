@@ -7,6 +7,7 @@ import Tab from 'react-bootstrap/Tab';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Developers } from './components/Developers';
+import { Contributions } from './components/Contributions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,7 +30,7 @@ root.render(
             <Developers />
           </Tab.Pane>
           <Tab.Pane eventKey="contributions">
-            <h1>Contributions</h1>
+            <Contributions />
           </Tab.Pane>
         </Tab.Content>
       </Row>
