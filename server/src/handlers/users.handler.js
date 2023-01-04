@@ -1,4 +1,4 @@
-const { setAccessHeaders, setStatus } = require('../utils/http');
+const { setAccessHeaders, setStatus, preflight } = require('../utils/http');
 
 const {
   findAllUsers,
@@ -26,6 +26,11 @@ const configure = router => {
   router
     .handle('/users/:id', deleteUser)
     .method('DELETE')
+    .provideReqRes(true);
+  // preflight hanlder
+  router
+    .handle('/users/:id', preflight)
+    .method('OPTIONS')
     .provideReqRes(true);
 };
 

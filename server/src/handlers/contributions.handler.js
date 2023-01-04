@@ -1,4 +1,4 @@
-const { setAccessHeaders } = require('../utils/http');
+const { setAccessHeaders, preflight } = require('../utils/http');
 const {
   getAllContributions,
   createContribution,
@@ -56,6 +56,11 @@ const configurateRoutes = router => {
   router
     .handle('/contributions/:id', deleteContribution)
     .method('DELETE')
+    .provideReqRes(true);
+  // preflight hanlder
+  router
+    .handle('/contributions/:id', preflight)
+    .method('OPTIONS')
     .provideReqRes(true);
 };
 
