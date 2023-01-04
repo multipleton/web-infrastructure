@@ -47,13 +47,13 @@ export const Edit = ({ show, onHide, data, triggerChanges }) => {
         <Form>
           <Modal.Body>
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" name="name" placeholder="Enter name" required="required" />
+            <Form.Control type="text" name="name" placeholder="Enter name" value={data.name} required="required" />
 
             <Form.Label>Country</Form.Label>
-            <Form.Control type="text" name="country" placeholder="Enter country" required="required" />
+            <Form.Control type="text" name="country" placeholder="Enter country" value={data.country} required="required" />
 
             <Form.Label>Stack</Form.Label>
-            <Form.Control type="text" name="stack" placeholder="Enter technology stack" />
+            <Form.Control type="text" name="stack" placeholder="Enter technology stack" value={data.stack} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={onHide}>

@@ -8,16 +8,34 @@ import Table from 'react-bootstrap/Table';
 import { Add } from './modals/Add';
 import { Contribution } from './Conribution';
 
-export const Contributions = () => {
+export const Contributions = ({magicNumber, setMagicNumber}) => {
   const [contributionList, setContributionList] = useState([]);
+  const [developerList, setDeveloperList] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
-  const [magicNumber, setMagicNumber] = useState(0);
+
+  const fetchDevelopers = async () => {
+    const response = await fetch("http://localhost:3012/users");
+    const body = await response.json();
+    setDeveloperList(body);
+
+    return body;
+  };
 
   const fetchContributions = async () => {
     const response = await fetch("http://localhost:3012/contributions");
     const body = await response.json();
 
-    setContributionList(body);
+    const developers = await fetchDevelopers();
+    const updatedBody = body.map((element) => {
+      const developer = developers.find((dev) => dev.shared_id === element.shared_id);
+      if (developer) {
+        element.author = developer.name;
+      }
+
+      return element;
+    });
+
+    setContributionList(updatedBody);
   };
 
   const triggerChanges = () => {
@@ -36,7 +54,7 @@ export const Contributions = () => {
         </Button>
       </Stack>
 
-      <Add show={showAdd} onHide={() => setShowAdd(false)} triggerChanges={triggerChanges} />
+      <Add show={showAdd} onHide={() => setShowAdd(false)} triggerChanges={triggerChanges} data={developerList} />
 
       <Table hover>
         <tbody>

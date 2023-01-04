@@ -8,10 +8,9 @@ import Table from 'react-bootstrap/Table';
 import { Developer } from './Developer';
 import { Add } from './modals/Add';
 
-export const Developers = () => {
+export const Developers = ({magicNumber, setMagicNumber}) => {
   const [developerList, setDeveloperList] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
-  const [magicNumber, setMagicNumber] = useState(0);
 
   const fetchDevelopers = async () => {
     const response = await fetch("http://localhost:3012/users");

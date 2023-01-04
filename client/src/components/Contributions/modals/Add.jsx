@@ -1,9 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import uuid from "react-native-uuid";
 
-export const Add = ({ show, onHide, triggerChanges }) => {
+export const Add = ({ show, onHide, triggerChanges, data }) => {
   const handleSubmit = (event) => {
     const { form } = event.target;
     const body = {};
@@ -23,8 +22,6 @@ export const Add = ({ show, onHide, triggerChanges }) => {
         body[field.name] = field.value;
       }
     }
-
-    body["shared_id"] = uuid.v4();
 
     event.preventDefault();
 
@@ -54,6 +51,11 @@ export const Add = ({ show, onHide, triggerChanges }) => {
 
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" name="description" placeholder="Enter description" required="required" />
+
+            <Form.Label>Author</Form.Label>
+            <Form.Select name="shared_id" aria-label="Choose an author...">
+              {data.map(element => <option value={element.shared_id}>{element.name}</option>)}
+            </Form.Select>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={onHide}>

@@ -10,6 +10,7 @@ export const Show = ({ show, onHide, data }) => {
         </Modal.Header>
         <Modal.Body>
           <p>{data.description}</p>
+          {data.author && <p>Author: {data.author}</p>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={onHide}>
