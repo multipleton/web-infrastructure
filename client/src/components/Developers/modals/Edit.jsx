@@ -1,8 +1,14 @@
+import { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 import Modal from 'react-bootstrap/Modal';
 
 export const Edit = ({ show, onHide, data, triggerChanges }) => {
+  const [inputName, setInputName] = useState(data.name);
+  const [inputCountry, setInputCountry] = useState(data.country);
+  const [inputStack, setInputStack] = useState(data.stack);
+
   const handleSubmit = (event) => {
     const { form } = event.target;
     const body = {};
@@ -47,13 +53,13 @@ export const Edit = ({ show, onHide, data, triggerChanges }) => {
         <Form>
           <Modal.Body>
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" name="name" placeholder="Enter name" value={data.name} required="required" />
+            <Form.Control type="text" name="name" placeholder="Enter name" value={inputName} onChange={(event) => setInputName(event.target.value)} required="required" />
 
             <Form.Label>Country</Form.Label>
-            <Form.Control type="text" name="country" placeholder="Enter country" value={data.country} required="required" />
+            <Form.Control type="text" name="country" placeholder="Enter country" value={inputCountry} onChange={(event) => setInputCountry(event.target.value)} required="required" />
 
             <Form.Label>Stack</Form.Label>
-            <Form.Control type="text" name="stack" placeholder="Enter technology stack" value={data.stack} />
+            <Form.Control type="text" name="stack" placeholder="Enter technology stack" value={inputStack} onChange={(event) => setInputStack(event.target.value)} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={onHide}>

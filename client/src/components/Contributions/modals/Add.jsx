@@ -54,7 +54,7 @@ export const Add = ({ show, onHide, triggerChanges, data }) => {
 
             <Form.Label>Author</Form.Label>
             <Form.Select name="shared_id" aria-label="Choose an author...">
-              {data.map(element => <option value={element.shared_id}>{element.name}</option>)}
+              {data.map(element => <option key={element.shared_id} value={element.shared_id}>{element.name}</option>)}
             </Form.Select>
           </Modal.Body>
           <Modal.Footer>
