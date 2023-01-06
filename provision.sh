@@ -1,37 +1,35 @@
 #!/bin/sh
 
 # Update and install packages
-apt-get -y update || exit 1
-apt-get -y install nginx || exit 1
+apt-get -y update
+apt-get -y install nginx
 
-# Install NVM (Node.js version manager)
+# install NVM (Node.js version manager)
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh" | bash
 
-# Export NVM namespace
+# export NVM namespace
 export NVM_DIR="$HOME/.nvm"
 
-# This loads nvm
+# this loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# This loads nvm bash_completion
+# this loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Switch Node.js version
+# switch Node.js version
 nvm install v16
 nvm use v16
 
-# Move to /vagrant
-cd /vagrant
+# install npm dependencies and build the client
+npm install --prefix client
+npm run build --prefix client
 
-# Install npm dependencies
-npm install || exit 1
+# move nginx config and client build
+cp ./nginx/default.conf ./etc/nginx/conf.d/default.conf
+cp ./client/build ./usr/share/nginx/client
+# TODO: copy server
 
-# Build the project
-npm run build || exit 1
-
-# Move nginx config and build
-cp ./nginx/default.conf /etc/nginx/conf.d/default.conf
-cp -r ./build /usr/share/nginx/lab-1
-
-# Start nginx service
+# start nginx service
 service nginx start
+
+# TODO: start server

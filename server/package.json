@@ -1,0 +1,15 @@
+{
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "start:docker": "npm start -- --port 80",
+    "docker:build": "docker build . -t web-infrastructure/server",
+    "docker:run": "docker run --name wi-server -p 3012:3012 web-infrastructure/server"
+  },
+  "dependencies": {
+    "@bakeryjs/router": "^1.0.1",
+    "cli-argv-parser": "^1.0.1",
+    "mongoose": "^6.8.2",
+    "pg": "^8.8.0"
+  }
+}
